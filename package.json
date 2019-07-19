@@ -28,4 +28,8 @@
     "type": "git",
     "url": "git+https://github.com/strarsis/google-maps-marker-icon.git"
   },
+  "dependencies": {
+    "mini-svg-data-uri": "^1.1.3",
+    "whatwg-fetch": "^3.0.0"
+  }
 }
