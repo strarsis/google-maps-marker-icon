@@ -1,7 +1,7 @@
 import 'whatwg-fetch'; // fetch polyfill
 import svgToMiniDataURI from 'mini-svg-data-uri';
 
-const googleMapMarkerIcon = function(src, dims = {
+export default function(src, dims = {
   width:  48,
   height: 48,
 }) {
@@ -31,7 +31,7 @@ const googleMapMarkerIcon = function(src, dims = {
   });
 }
 
-const dimsToSvgText = function(text, dims = {
+export function dimsToSvgText(text, dims = {
   width:  48,
   height: 48,
 }) {
@@ -46,7 +46,3 @@ const dimsToSvgText = function(text, dims = {
   let newText    = serializer.serializeToString(svg);
   return newText;
 };
-
-
-export dimsToSvgText;
-export default googleMapMarkerIcon;
