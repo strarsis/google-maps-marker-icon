@@ -12,28 +12,41 @@ const googleMapMarkerIcon = function(src, dims = {
       // Non-SVGs, binary/raster images
       return response.blob()
       .then((blob) => {
-        let srcUrl = URL.createObjectURL(blob);
-        return srcUrl;
+        // pass-through
+        return URL.createObjectURL(blob); // make compatible as Google Maps Marker icon
       });
     }
 
     // SVGs
     return response.text()
     .then((text) => {
-      const parser = new DOMParser();
-      const doc    = parser.parseFromString(text, 'image/svg+xml');
-      const svg    = doc.firstChild; // assuming one <svg> as 1st node
+      let newText = dimsToSvgText(text, dims);
 
-      svg.setAttribute('width',  dims.width);
-      svg.setAttribute('height', dims.height);
+      // make compatible as Google Maps Marker icon
+      let newSrc  = svgToMiniDataURI(newText);
 
-      var serializer = new XMLSerializer();
-      let newText    = serializer.serializeToString(svg);
-      let srcUrl     = svgToMiniDataURI(newText);
-      return srcUrl;
+      return newSrc;
     });
 
   });
 }
 
+const dimsToSvgText(text, dims = {
+  width:  48,
+  height: 48,
+}) {
+  const parser = new DOMParser();
+  const doc    = parser.parseFromString(text, 'image/svg+xml');
+  const svg    = doc.firstChild; // assuming one <svg> as 1st node
+
+  svg.setAttribute('width',  dims.width);
+  svg.setAttribute('height', dims.height);
+
+  var serializer = new XMLSerializer();
+  let newText    = serializer.serializeToString(svg);
+  return newText;
+};
+
+
+export dimsToSvgText;
 export default googleMapMarkerIcon;
