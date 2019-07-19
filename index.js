@@ -31,7 +31,7 @@ const googleMapMarkerIcon = function(src, dims = {
   });
 }
 
-const dimsToSvgText(text, dims = {
+const dimsToSvgText = function(text, dims = {
   width:  48,
   height: 48,
 }) {
