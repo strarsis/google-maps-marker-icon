@@ -14,9 +14,10 @@ then passing the modified SVG as usbale, serialized `data:image/svg+xml` URL.
 
 ## Usage
 ````
+# with npm
 > npm install --save google-maps-marker-icon
-````
-````
+
+# with yarn
 > yarn add google-maps-marker-icon
 ````
 
