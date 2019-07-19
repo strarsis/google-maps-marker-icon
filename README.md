@@ -1,7 +1,7 @@
 # google-maps-marker-icon
 Helper function for forcing dimensions of SVGs to be used as [Google Map marker](https://developers.google.com/maps/documentation/javascript/markers).
 
-## Problem and purpose of this package
+## Problem and purpose of this module
 [Google Maps Markers can use SVGs as icon](https://developers.google.com/maps/documentation/javascript/markers).
 However, when the SVGs themselves got no specific width or height (or not one that fits an icon), there is currently no way for forcing the intended dimesions as icon on them, instead the SVG is shown in its full or non-icon size on the map.
 Even using the `size` property, adding the marker icon as a [Complex icons](https://developers.google.com/maps/documentation/javascript/markers#complex_icons), will have no effect on the size of the SVG icon images.
